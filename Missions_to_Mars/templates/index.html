@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=.1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Mission to Mars</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        
+      
+  </head>
+  <body class= bg-light>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-md-12'>
+          <div class='jumbotron text-center bg-dark text-light' >
+          <!-- style='background-color:rgb(12, 12, 36); color: lightgoldenrodyellow;'> -->
+            <h1>Mission to Mars</h1>
+            <a class="btn btn-light" href="/scrape" role="button">Scrape New Data</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- news -->
+    <main class='container'>
+      <div class='row bg-info text-light'>
+        <div class='col-md-12'>
+          <h3>Latest Mars News</h3> 
+        </div>        
+      </div>
+
+      <div class='row bg-info text-light'>
+        <div class='col-md-12'>
+          <h5>{{mars_data.news_title}}</h5>
+          <p class='text-justify' style="font-size: small;">{{mars_data.news}}</p> 
+        </div>
+      </div>  
+
+      <br>
+
+      <!-- featured image -->
+      <div class='row'>
+        <div class='col-md-8'>
+          <h3>Featured Image</h3>
+          <a href={{mars_data.featured_image_link}}></a><img src={{mars_data.featured_image_link}} class='img-responsive' width="100%" height="auto" alt="JPL Mars - Featured Image"></a>
+        </div>
+       
+        <!-- weather -->
+        <div class='col-md-4'>
+          <div class = 'row'>
+            <div class='card'>
+              <div class='card-header bg-dark'>
+                <h5 class='card-title text-light'>Current Weather on Mars</h5>
+              </div>
+              <div class= 'card-body'>
+                <p class= 'card-text'> {{mars_data.current_weather}}</p>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class = 'row'>
+            <div class= 'card'>
+              <div class='card-header bg-dark'>
+                <h5 class='card-title text-light'>Mars Facts</h5>
+              </div>
+              <div class= 'card-body'>
+                <table class= table-striped>{{mars_data.facts|safe}}</table> 
+              </div>  
+            </div>         
+          </div>
+        </div>
+      </div>
+    <br>
+      <div class='row'>
+          <div class='col-lg-6'>
+              <div class="card">
+                  <img src="{{mars_data.hemisphere_images[0].img_url}}" class="card-img-top" alt="">
+                  <div class="card-body">
+                      <h5 class="card-title">{{mars_data.hemisphere_images[0].title}}</h5>
+                  </div>
+              </div>
+          </div>
+          <div class='col-lg-6'>
+              <div class="card">
+                  <img src="{{mars_data.hemisphere_images[1].img_url}}" class="card-img-top" alt="">
+                  <div class="card-body">
+                      <h5 class="card-title">{{mars_data.hemisphere_images[1].title}}</h5>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class='row'>
+          <div class='col-lg-6'>
+              <div class="card">
+                  <img src="{{mars_data.hemisphere_images[2].img_url}}" class="card-img-top" alt="">
+                  <div class="card-body">
+                      <h5 class="card-title">{{mars_data.hemisphere_images[2].title}}</h5>
+                  </div>
+              </div>
+          </div>
+          <div class='col-lg-6'>
+              <div class="card">
+                  <img src="{{mars_data.hemisphere_images[3].img_url}}" class="card-img-top" alt="">
+                  <div class="card-body">
+                      <h5 class="card-title">{{mars_data.hemisphere_images[3].title}}</h5>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </main>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>
+<!-- 
+
+    <body>
+        {% for item in info %}
+            <div class="container">
+                <div class= "row">
+                    <div class = "col-lg-12">
+                        <h1>Mission to Mars</h1>
+                        <a href="/scrape" class="btn btn-dark btn-lg active" aria-pressed="true">Scrape</a>
+                    </div>
+                </div>
+                <div class= "row">
+                    <div class = "col-lg-12">
+                        <h2>Latest News</h2>
+                        <h3>item.news_title</h3>
+                        <p> item.news</p>
+                    </div>
+                </div>
+
+                <div class= "row">
+                    <div class = "col-lg-8">
+                        <a href="item.featured_image_url", src="item.featured_image_url", alt="Featured Mars Image"><h2>Featured Mars Image</h2></a> 
+                    </div>
+
+                    <div class = "col-lg-4">
+                        <div class = "row"> 
+                            <h2> Current Weater on Mars</h2>
+                            <p>item.current_weather</p>
+                        </div>
+                        <div class = "row">
+                            <table class= "table">{{item.facts}}</table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "row">
+                    <div class="col-lg-12">
+                        <h2>Mars Hemispheres</h2>
+                    </div>
+                </div>
+
+                <div class = "row">
+                    {% for hemisphere in item.hemisphere_image_urls %}
+                    <div class="col-md-6 card">
+                        <div class= "card-body">
+                            <h4 class = "card-title">
+                                <p>
+                                    {{hemisphere.title}}
+                                </p>
+                            </h4>
+                        </div> 
+                        <img src="{{hemisphere.img_url}}" class= card-img-top alt="Mars Hemipshere Photos">
+                    
+                    </div>
+                    {% endfor %} 
+                </div>
+            </div>
+            {% endfor %}
+        
+    </body>
+
+
+</html> -->
